@@ -1,9 +1,20 @@
+
+
+
 # Student Log
 
 ## Overview
 
+
+
+
+
 This repository serves as a log of work you've done and work you intend to do.
 This is important for several reasons:
+
+
+
+
 
 1. It serves as a way to track the history of your own work so you can review
    what you've done in the past
