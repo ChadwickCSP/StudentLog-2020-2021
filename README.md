@@ -16,13 +16,13 @@ This is important for several reasons:
 
 ## Project 1: Beginning a Log
 
-[Overview](#overview-1)
-[Log Entry File Naming Convention](#log-entry-file-naming-convention)
-[Log Entry File Format](#log-entry-file-format)
-[Branch / Commits / Pushing to Github](#branch--commits--pushing-to-github)
-[The start-entry.sh Script](#the-start-entrysh-script)
-[Grading](#grading)
-[Getting Help](#getting-help)
+* [Overview](#overview-1)
+* [Log Entry File Naming Convention](#log-entry-file-naming-convention)
+* [Log Entry File Format](#log-entry-file-format)
+* [Branch / Commits / Pushing to Github](#branch--commits--pushing-to-github)
+* [The start-entry.sh Script](#the-start-entrysh-script)
+* [Grading](#grading)
+* [Getting Help](#getting-help)
 
 ### Overview
 
@@ -40,12 +40,12 @@ time stamp.
 
 ### Log Entry File Naming Convention
 
-All log entries should be placed in the `log` folder and should be put in a file
-named based on the date of the entry. For example, if you create a log on
+All log entries should be placed in the `logs` folder and should be put in a
+file named based on the date of the entry. For example, if you create a log on
 September 12th, 2020, the name of the file that contains the entry should be
-`2020-09-12.log`. Naming files in this manner will result in the files listing
-in reverse chronological order when running the `ls` command; that is, the most
-recent entry will appear first.
+`2020-09-12.log.md`. Naming files in this manner will result in the files
+listing in reverse chronological order when running the `ls` command; that is,
+the most recent entry will appear first.
 
 ### Log Entry File Format
 
@@ -60,12 +60,14 @@ criteria:
    * The time stamp format should match the results of running `date +"%A, %B
      %e, %Y %I:%M %p"`.
 4. A sign-on log entry should contain a *Task List* list of items you are
-   planning to work on. Finally, a sign-off message may optionally include a
-   message about the work to be done.
+   planning to work on. Finally, a sign-on message should include a sentence
+   stating that it is a sign on and optionally include a message about the work
+   to be done.
 5. A sign-off log entry should contain an *Task List* list of items that you
    accomplished as well as any items from your sign-on log entry that were not
-   accomplished. Finally, a sign-off message may optionally include a message
-   about the work that was done.
+   accomplished. Finally, a sign-off message should include a sentence stating
+   that it is a sign off and may optionally include a message about the work
+   that was done.
    * Each entry that was not accomplished should be accompanied with a note as
      to why it wasn't accomplished. This could be as simple as, No time,
      reprioritized, or no longer relevant.
@@ -75,42 +77,49 @@ criteria:
 
 #### Example Log File
 
-`2020-09-13.log`
+`logs/2020-09-13.log.md`
 ```
 # Sunday, September 13, 2020 05:38 AM
-[ ] Setup CSP GitHub Class
-[ ] Create Repository for CSP Log project
-[ ] Write README.md for first Log project
-[ ] Add CSP Log project to Google Classroom
+- [ ] Setup CSP GitHub Class
+- [ ] Create Repository for CSP Log project
+- [ ] Write README.md for first Log project
+- [ ] Add CSP Log project to Google Classroom
+
+Signing on to work on creating first project for CSP
 
 # Sunday, September 13, 2020 07:42 AM
-[X] Setup CSP GitHub Class
-[X] Create Repository for CSP Log project
-[ ] Write README.md for first Log project - Started
-[ ] Add CSP Log project to Google Classroom
+- [X] Setup CSP GitHub Class
+- [X] Create Repository for CSP Log project
+- [ ] Write README.md for first Log project - Started
+- [ ] Add CSP Log project to Google Classroom
 
-Got hungry so I didn't finish. I'll be back later today. Finished writing the 
-first few parts of the assignment. I need to go back and add a formatting rule
-that says log files should not go past Col 80 and reference the VSCode plugin
-"Rewrap" for automagically doing this for you.
+Signing off for now. I got hungry so I didn't finish. I'll be back later today.
+Finished writing the first few parts of the assignment. I need to go back and
+add a formatting rule that says log files should not go past Col 80 and
+reference the VSCode plugin "Rewrap" for automagically doing this for you.
 
 # Sunday, September 13, 2020 12:30 PM
-[ ] Add section on max line length for log entries
-[ ] Add reference to Rewrap VSCode plugin
-[ ] Add section on when to make commits 
-[ ] Add section on utility scripts
-[ ] Add section on grading
-[ ] Add section on getting help
-[ ] Add CSP Log project to Google Classroom
+- [ ] Add section on max line length for log entries
+- [ ] Add reference to Rewrap VSCode plugin
+- [ ] Add section on when to make commits 
+- [ ] Add section on utility scripts
+- [ ] Add section on grading
+- [ ] Add section on getting help
+- [ ] Add CSP Log project to Google Classroom
+
+Signing on to continue working on git log project for CSP.
 
 # Sunday, September 13, 2020 2:14 PM
-[X] Add section on max line length for log entries
-[X] Add reference to Rewrap VSCode plugin
-[X] Add section on when to make commits 
-[X] Add section on utility scripts
-[X] Add section on grading
-[X] Add section on getting help
-[ ] Add CSP Log project to Google Classroom
+- [X] Add section on max line length for log entries
+- [X] Add reference to Rewrap VSCode plugin
+- [X] Add section on when to make commits 
+- [X] Add section on utility scripts
+- [X] Add section on grading
+- [X] Add section on getting help
+- [ ] Add CSP Log project to Google Classroom
+
+Signing off. Almost done, just need to tighten up a few things and then post to
+Google Classroom
 ```
 
 ### Branch / Commits / Pushing to Github
@@ -155,15 +164,18 @@ To make writing log entries easier, you will create a script
 
 ##### The Script Algorithm
 
-1. The first line of the script should be `#!/bin/bash` this tells your shell
-   that it should be executed using `bash`
+1. The first line of the script should be `#!/bin/bash -e` this tells your shell
+   that it should be executed using `bash`.
 2. Create a variable called `FILENAME` which contains the results of running
-   `echo "$(date +'%Y-%m-%d').log"`
+   `echo "logs/$(date +'%Y-%m-%d').log.md"`
 3. Use the `touch` command on `$FILENAME` (this creates a file if it doesn't
    exist)
-4. Use the `echo` command to append (`>>`) `$FILENAME` with the string "# $(date
-   +'%A, %B %e, %Y %I:%M %p'"
-5. Use the `echo` command to append `$FILENAME` with the string "[ ]"
+4. Use the `echo` command to append (`>>`) `$FILENAME` with the string `"#
+   $(date +'%A, %B %e, %Y %I:%M %p')"`
+   * You may wish to `echo` one or more blank lines into `$FILENAME` for
+     formatting (e.g. `echo "" >> $FILENAME` will add a blank line at the end of
+     the file.)
+5. Use the `echo` command to append `$FILENAME` with the string `"- [ ]"`
 6. Finally, open `$FILENAME` using the `code` command
 
 ### Grading
