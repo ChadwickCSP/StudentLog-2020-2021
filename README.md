@@ -16,6 +16,14 @@ This is important for several reasons:
 
 ## Project 1: Beginning a Log
 
+[Overview](#overview-1)
+[Log Entry File Naming Convention](#log-entry-file-naming-convention)
+[Log Entry File Format](#log-entry-file-format)
+[Branch / Commits / Pushing to Github](#branch--commits--pushing-to-github)
+[The start-entry.sh Script](#the-start-entrysh-script)
+[Grading](#grading)
+[Getting Help](#getting-help)
+
 ### Overview
 
 The first project is to fork this repository and create two log entries each
